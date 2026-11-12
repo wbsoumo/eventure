@@ -51,14 +51,19 @@ export async function fetchGalleryPhotos() {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     if (data.success && Array.isArray(data.photos) && data.photos.length > 0) {
-      return data.photos.map((p) => ({
-        id: p.id,
-        title: p.title,
-        category: p.category,
-        thumb: p.thumbnail_url || p.image_url,
-        full: p.image_url,
-        aspect: p.aspect_ratio || 'landscape',
-      }));
+      return data.photos.map((p) => {
+        const url = p.image_url || p.thumbnail_url;
+        return {
+          id: p.id,
+          src: url,
+          alt: p.title || 'Eventure Photo',
+          title: p.title || 'Eventure Photo',
+          category: (p.category || 'all').toLowerCase(),
+          thumb: p.thumbnail_url || url,
+          full: url,
+          aspect: p.aspect_ratio || 'landscape',
+        };
+      });
     }
   } catch (err) {
     console.warn('[Eventure API] Falling back to local gallery data:', err.message);

@@ -146,26 +146,31 @@ export default function Gallery() {
       <section className="bg-[#121215] py-16">
         <div className="shell">
           <div className="columns-1 gap-6 sm:columns-2 md:columns-3 lg:columns-4">
-            {currentVisible.map((item, idx) => (
-              <div
-                key={idx}
-                className="group relative mb-6 break-inside-avoid overflow-hidden rounded-xl bg-[#1b1b1f] border border-[#2c2c31] cursor-pointer transition-all hover:border-[#d4af37]/40 hover:shadow-xl"
-                onClick={() => openLightbox(idx)}
-              >
-                <img
-                  src={item.src}
-                  alt={item.alt}
-                  loading="lazy"
-                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex flex-col justify-end p-4">
-                  <span className="text-[0.6rem] font-bold uppercase tracking-[0.2em] text-[#d4af37]">
-                    {item.category}
-                  </span>
-                  <p className="text-sm font-medium text-[#f7f3ec] mt-1">{item.alt}</p>
+            {currentVisible.map((item, idx) => {
+              const imgSrc = item.src || item.full || item.thumb;
+              const imgAlt = item.alt || item.title || 'Eventure Photograph';
+              const imgCat = item.category || 'Gallery';
+              return (
+                <div
+                  key={idx}
+                  className="group relative mb-6 break-inside-avoid overflow-hidden rounded-xl bg-[#1b1b1f] border border-[#2c2c31] cursor-pointer transition-all hover:border-[#d4af37]/40 hover:shadow-xl min-h-[200px]"
+                  onClick={() => openLightbox(idx)}
+                >
+                  <img
+                    src={imgSrc}
+                    alt={imgAlt}
+                    loading="lazy"
+                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex flex-col justify-end p-4">
+                    <span className="text-[0.6rem] font-bold uppercase tracking-[0.2em] text-[#d4af37]">
+                      {imgCat}
+                    </span>
+                    <p className="text-sm font-medium text-[#f7f3ec] mt-1">{imgAlt}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Load More Button */}
@@ -210,9 +215,9 @@ export default function Gallery() {
       {/* Lightbox */}
       <Lightbox
         isOpen={lightboxIndex !== null}
-        image={activeItem?.src}
-        title={activeItem?.alt}
-        category={activeItem?.category}
+        image={activeItem?.src || activeItem?.full || activeItem?.thumb}
+        title={activeItem?.alt || activeItem?.title || 'Eventure Photograph'}
+        category={activeItem?.category || 'Gallery'}
         onClose={closeLightbox}
         onNext={nextImage}
         onPrev={prevImage}
