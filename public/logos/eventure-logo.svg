@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 80" fill="none" class="eventure-logo">
+  <defs>
+    <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5e5b8" />
+      <stop offset="50%" stop-color="#d4af37" />
+      <stop offset="100%" stop-color="#aa7c11" />
+    </linearGradient>
+    <linearGradient id="gold-glow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#d4af37" stop-opacity="0.2" />
+    </linearGradient>
+  </defs>
+
+  <!-- Luxury Monogram Emblem -->
+  <g transform="translate(10, 10)">
+    <!-- Diamond Frame -->
+    <path d="M 30 2 L 58 30 L 30 58 L 2 30 Z" stroke="url(#gold-grad)" stroke-width="1.5" fill="rgba(212,175,55,0.06)" />
+    <!-- Inner Accent Diamond -->
+    <path d="M 30 10 L 50 30 L 30 50 L 10 30 Z" stroke="url(#gold-grad)" stroke-width="0.8" stroke-dasharray="2,2" opacity="0.6" />
+    <!-- Stylized Monogram E -->
+    <path d="M 23 20 L 38 20 M 23 20 L 23 40 M 23 40 L 38 40 M 23 30 L 34 30" stroke="url(#gold-grad)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+    <!-- Accent Sparkles -->
+    <circle cx="30" cy="2" r="1.5" fill="url(#gold-grad)" />
+    <circle cx="58" cy="30" r="1.5" fill="url(#gold-grad)" />
+    <circle cx="30" cy="58" r="1.5" fill="url(#gold-grad)" />
+    <circle cx="2" cy="30" r="1.5" fill="url(#gold-grad)" />
+  </g>
+
+  <!-- Typography: EVENTURE -->
+  <g transform="translate(85, 42)">
+    <text font-family="'Cormorant Garamond', 'Cinzel', 'Playfair Display', Georgia, serif" font-size="34" font-weight="400" letter-spacing="0.22em" fill="#f7f3ec">
+      EVENTURE
+    </text>
+  </g>
+
+  <!-- Subtitle -->
+  <g transform="translate(90, 60)">
+    <text font-family="'Inter', sans-serif" font-size="7.5" font-weight="600" letter-spacing="0.38em" fill="url(#gold-grad)">
+      LUXURY EXPERIENCES · KOLKATA
+    </text>
+  </g>
+</svg>
