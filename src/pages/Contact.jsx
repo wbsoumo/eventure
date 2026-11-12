@@ -88,43 +88,55 @@ export default function Contact() {
     <main id="main">
       {/* Cinematic Hero Section with Form */}
       <section className="relative isolate flex min-h-[85svh] items-center overflow-hidden bg-[#0a0a0b] pb-14 pt-32 lg:pb-20 lg:pt-40">
-        {/* Background Image */}
-        <div className="absolute inset-0 -z-10 overflow-hidden">
+        {/* Background Image with Cinematic Grading Scrims */}
+        <div className="absolute inset-0 -z-10 overflow-hidden bg-[#0a0a0b]">
           <img
-            src="/images/unsplash/photo-1744805624890-9931ebb50428.jpg"
+            src="https://cdn.myeventure.in/uploads/general/photo-1744805624890-9931ebb50428-b107c689e574.jpg"
             alt="Eventure luxury setting"
-            className="kenburns h-[118%] w-full object-cover"
+            className="kenburns h-full w-full object-cover opacity-25"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0b]/85 via-[#0a0a0b]/60 to-[#0a0a0b]" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0b]/90 via-[#0a0a0b]/55 to-[#0a0a0b]/35" />
+          <div className="hero-scrim-vertical pointer-events-none absolute inset-0" aria-hidden="true" />
+          <div className="hero-scrim-horizontal pointer-events-none absolute inset-0" aria-hidden="true" />
+          <div className="hero-scrim-vignette pointer-events-none absolute inset-0" aria-hidden="true" />
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background: 'linear-gradient(90deg, rgba(10, 10, 11, 0.98) 0%, rgba(10, 10, 11, 0.92) 50%, rgba(10, 10, 11, 0.75) 100%)'
+            }}
+            aria-hidden="true"
+          />
         </div>
 
         <div className="shell w-full">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-start lg:gap-16">
-            {/* Title & Info */}
+            {/* Title & Info — High Contrast */}
             <div className="lg:col-span-5 pt-4">
-              <p className="eyebrow mb-6">Contact &amp; Enquiries</p>
-              <h1 className="page-title max-w-4xl text-balance">
+              <p className="eyebrow mb-6 text-[#d4af37] font-semibold tracking-[0.3em] drop-shadow-md">
+                Contact &amp; Enquiries
+              </p>
+              <h1 className="page-title max-w-4xl text-balance text-[#f7f3ec] drop-shadow-lg font-light">
                 Let's begin with <br />
                 <span className="italic text-[#c89d42]">a conversation</span>.
               </h1>
-              <p className="mt-8 text-[1.05rem] leading-relaxed text-[#f7f3ec]/80 max-w-xl">
+              <p className="mt-8 text-[1.05rem] leading-relaxed text-[#f7f3ec] max-w-xl drop-shadow-md">
                 Tell us the occasion, the date and the feeling you want people to leave with. Every enquiry is read by a senior member of our team and answered within one working day.
               </p>
 
               <div className="mt-12 space-y-6 border-t border-[#2c2c31] pt-8">
                 <div>
-                  <p className="text-[0.68rem] uppercase tracking-[0.25em] text-[#c89d42]">Kolkata Studio</p>
-                  <p className="mt-2 text-sm leading-relaxed text-[#f7f3ec]">
+                  <p className="text-[0.68rem] uppercase tracking-[0.25em] text-[#c89d42] font-semibold">
+                    Kolkata Studio
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-[#f7f3ec] drop-shadow">
                     {siteData.address.street}<br />
                     {siteData.address.locality}, {siteData.address.city} {siteData.address.postalCode}, {siteData.address.region}
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 text-sm">
-                  <a href={`tel:+91${siteData.whatsapp}`} className="text-[#f7f3ec]/80 hover:text-[#c89d42]">
+                  <a href={`tel:+91${siteData.whatsapp}`} className="text-[#f7f3ec] hover:text-[#c89d42] transition-colors font-medium">
                     +91 {siteData.whatsapp.slice(0, 5)} {siteData.whatsapp.slice(5)}
                   </a>
-                  <a href={`mailto:${siteData.email}`} className="text-[#f7f3ec]/80 hover:text-[#c89d42]">
+                  <a href={`mailto:${siteData.email}`} className="text-[#f7f3ec] hover:text-[#c89d42] transition-colors font-medium">
                     {siteData.email}
                   </a>
                 </div>
@@ -134,8 +146,8 @@ export default function Contact() {
 
             {/* Form Glass Card */}
             <div className="lg:col-span-7">
-              <div className="glass p-6 sm:p-8 lg:p-10 rounded-3xl border border-[#2c2c31]">
-                <p className="eyebrow mb-5">Event Brief</p>
+              <div className="p-6 sm:p-8 lg:p-10 rounded-3xl border border-[#2c2c31] bg-[#121215]/95 backdrop-blur-2xl shadow-2xl">
+                <p className="eyebrow mb-5 text-[#d4af37] font-semibold tracking-[0.25em]">Event Brief</p>
 
                 {submitted ? (
                   <div className="py-12 text-center">
