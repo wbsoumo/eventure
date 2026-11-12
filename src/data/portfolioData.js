@@ -5,7 +5,7 @@ export const portfolioData = [
     category: "Wedding",
     location: "Udaipur & Kolkata",
     description: "A lakeside palace taken over for three days, mandap, sangeet, and a reception staged across two courtyards, with 450 guests flown in and hosted end to end.",
-    image: "/images/wedding-ceremony-confetti.webp",
+    image: "https://cdn.myeventure.in/uploads/weddings/wedding-ceremony-confetti-176ecf8c80ef.webp",
     stats: "3 Days · 450 Guests · Palace Takeover",
     scope: "Creative Direction, Production, Guest Logistics & Hospitality"
   },
@@ -15,7 +15,7 @@ export const portfolioData = [
     category: "Corporate",
     location: "Kolkata & Mumbai",
     description: "A two-day flagship summit for a national media house, main stage production, four breakout tracks, live broadcast feed and full delegate management.",
-    image: "/images/kotak-neo-kona-kona-investor.jpeg",
+    image: "https://cdn.myeventure.in/uploads/corporate/kotak-neo-kona-kona-investor-f59018e3ef37.jpeg",
     stats: "2 Days · 1,200 Delegates · Live Broadcast",
     scope: "Broadcast Stage, AV Engineering, VIP Protocol"
   },
@@ -25,7 +25,7 @@ export const portfolioData = [
     category: "Corporate",
     location: "Delhi NCR",
     description: "Red carpet, celebrity host, live performances and a show-called award ceremony delivered to the second for a leading banking and financial services group.",
-    image: "/images/summit-audience.webp",
+    image: "https://cdn.myeventure.in/uploads/corporate/summit-audience-7d59ba7a3cae.webp",
     stats: "Gala Dinner · 800 Attendees · Celebrity Host",
     scope: "Show Direction, Lighting Rig, Artist Management"
   },
@@ -55,7 +55,7 @@ export const portfolioData = [
     category: "Wedding",
     location: "Rajasthan",
     description: "A traditional wedding staged inside a heritage haveli, with ritual detail, floral architecture and a guest journey designed for three generations at once.",
-    image: "/images/petal-shower-couple.webp",
+    image: "https://cdn.myeventure.in/uploads/weddings/petal-shower-couple-38f221764218.webp",
     stats: "Heritage Property · 350 Guests · Floral Architecture",
     scope: "Authentic Ritual Décor, Heritage Lighting, Hospitality"
   },

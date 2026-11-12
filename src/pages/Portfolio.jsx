@@ -1,20 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { portfolioData } from '../data/portfolioData';
+import { portfolioData as initialPortfolio } from '../data/portfolioData';
 import { siteData } from '../data/siteData';
 import Lightbox from '../components/Lightbox';
+import { fetchPortfolioEvents } from '../services/api';
 
 export default function Portfolio() {
+  const [projects, setProjects] = useState(initialPortfolio);
   const [filter, setFilter] = useState('All');
   const [selectedImage, setSelectedImage] = useState(null);
   const [activeProject, setActiveProject] = useState(null);
+
+  useEffect(() => {
+    fetchPortfolioEvents().then((data) => {
+      if (Array.isArray(data) && data.length > 0) {
+        setProjects(data);
+      }
+    });
+  }, []);
 
   const categories = ['All', 'Wedding', 'Corporate', 'Destination'];
 
   const filteredProjects =
     filter === 'All'
-      ? portfolioData
-      : portfolioData.filter((p) => p.category.toLowerCase() === filter.toLowerCase());
+      ? projects
+      : projects.filter((p) => (p.category || '').toLowerCase() === filter.toLowerCase());
 
   const openLightbox = (project) => {
     setSelectedImage(project.image);

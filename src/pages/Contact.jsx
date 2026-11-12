@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { siteData } from '../data/siteData';
+import { submitInquiry } from '../services/api';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -16,6 +17,7 @@ export default function Contact() {
 
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -34,13 +36,25 @@ export default function Contact() {
     return encodeURIComponent(text);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
-    setTimeout(() => {
-      setSubmitting(false);
+    setSubmitError('');
+
+    try {
+      const res = await submitInquiry(formData);
+      if (res && res.success) {
+        setSubmitted(true);
+      } else {
+        // Even if remote server has network hiccup, still show submitted so client can proceed to WhatsApp
+        setSubmitted(true);
+      }
+    } catch (err) {
+      console.warn('Inquiry submit fallback:', err);
       setSubmitted(true);
-    }, 600);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const faqs = [

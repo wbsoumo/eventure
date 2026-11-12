@@ -1,13 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { galleryData } from '../data/galleryData';
+import { galleryData as initialGallery } from '../data/galleryData';
 import { siteData } from '../data/siteData';
 import Lightbox from '../components/Lightbox';
+import { fetchGalleryPhotos } from '../services/api';
 
 export default function Gallery() {
+  const [photos, setPhotos] = useState(initialGallery);
   const [filter, setFilter] = useState('all');
   const [lightboxIndex, setLightboxIndex] = useState(null);
   const [visibleCount, setVisibleCount] = useState(30);
+
+  useEffect(() => {
+    fetchGalleryPhotos().then((data) => {
+      if (Array.isArray(data) && data.length > 0) {
+        setPhotos(data);
+      }
+    });
+  }, []);
 
   const filterTabs = [
     { label: 'All Works', value: 'all' },
@@ -19,8 +29,8 @@ export default function Gallery() {
 
   const filteredItems =
     filter === 'all'
-      ? galleryData
-      : galleryData.filter((item) => item.category === filter);
+      ? photos
+      : photos.filter((item) => (item.category || '').toLowerCase() === filter.toLowerCase());
 
   const currentVisible = filteredItems.slice(0, visibleCount);
 
