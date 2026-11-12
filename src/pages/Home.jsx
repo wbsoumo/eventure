@@ -18,31 +18,26 @@ export default function Home() {
     <main id="main">
       {/* Hero Section */}
       <section className="hero relative flex w-full flex-col overflow-hidden bg-[#0a0a0b]">
-        {/* Background Poster Image */}
+        {/* Background Chandelier Ballroom Image (Unified across all screen sizes) */}
         <div className="absolute inset-0">
           <img
             src="/images/unsplash/photo-1745682595597-8932b7f12169.jpg"
             alt="Eventure Luxury Celebration"
-            className="kenburns hidden h-full w-full object-cover md:block"
-          />
-          <img
-            src="/images/wedding-ceremony-confetti.webp"
-            alt="Eventure Wedding Celebration"
-            className="kenburns h-full w-full object-cover md:hidden"
+            className="kenburns h-full w-full object-cover"
           />
         </div>
 
-        {/* Cinematic Grading Scrims */}
+        {/* Cinematic Grading Scrims & Top Blur */}
         <div
-          className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#0a0a0b]/75 via-[#0a0a0b]/55 to-[#0a0a0b]/95 lg:from-[#0a0a0b]/70 lg:via-[#0a0a0b]/25 lg:to-[#0a0a0b]/90"
+          className="hero-scrim-vertical pointer-events-none absolute inset-0"
           aria-hidden="true"
         />
         <div
-          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0a0a0b]/55 via-[#0a0a0b]/45 to-[#0a0a0b]/35 lg:from-[#0a0a0b]/85 lg:via-[#0a0a0b]/40 lg:to-transparent"
+          className="hero-scrim-horizontal pointer-events-none absolute inset-0"
           aria-hidden="true"
         />
         <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_90%_at_50%_30%,transparent_45%,rgba(10,10,11,.72)_100%)]"
+          className="hero-scrim-vignette pointer-events-none absolute inset-0"
           aria-hidden="true"
         />
 
@@ -50,11 +45,11 @@ export default function Home() {
         <div className="hero-body relative z-10 flex flex-1 items-center">
           <div className="shell w-full">
             <div className="max-w-4xl">
-              <p className="eyebrow hero-eyebrow">
+              <p className="eyebrow hero-eyebrow drop-shadow-md">
                 Luxury Weddings &nbsp;·&nbsp; Corporate Events &nbsp;·&nbsp; Pan India / Global
               </p>
 
-              <h1 className="display hero-title text-[#f7f3ec]">
+              <h1 className="hero-title text-[#f7f3ec] drop-shadow-lg">
                 <span className="line-mask block">
                   <span>Where vision</span>
                 </span>
@@ -66,7 +61,7 @@ export default function Home() {
                 </span>
               </h1>
 
-              <p className="hero-copy max-w-xl text-[1.05rem] leading-relaxed text-[#f7f3ec]/75">
+              <p className="hero-copy max-w-xl text-[1.05rem] leading-relaxed text-[#f7f3ec]/85 drop-shadow-md">
                 For more than a decade, India’s most discerning families and brands have trusted
                 Eventure with the occasions that truly matter — designed with ambition, executed
                 without a single visible seam.
@@ -85,14 +80,6 @@ export default function Home() {
                 >
                   View our work
                 </Link>
-                <a
-                  href={`https://wa.me/91${siteData.whatsapp}?text=Hello%20Eventure%2C%20I%20would%20like%20to%20discuss%20an%20upcoming%20event.`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-ghost grow basis-full !px-6 min-[375px]:basis-[45%] sm:hidden"
-                >
-                  WhatsApp
-                </a>
               </div>
             </div>
           </div>
@@ -101,7 +88,7 @@ export default function Home() {
         {/* Bottom Rail */}
         <div className="hero-rail relative z-10 shrink-0">
           <div className="shell">
-            <div className="flex items-end justify-between border-t border-[#f7f3ec]/12 py-5 pr-16 sm:py-6 sm:pr-0">
+            <div className="flex items-end justify-between border-t border-[#f7f3ec]/15 py-5 pr-16 sm:py-6 sm:pr-0">
               <div className="flex items-end gap-7 sm:gap-12">
                 <div>
                   <p className="font-display text-2xl text-[#d4af37] sm:text-3xl">Pan India / Global</p>
@@ -142,7 +129,7 @@ export default function Home() {
           <div className="lg:col-span-5">
             <div>
               <p className="eyebrow mb-5">Our story</p>
-              <h2 className="display text-balance text-[clamp(2.1rem,4.6vw,3.6rem)]">
+              <h2 className="section-title text-balance">
                 We exist for the occasions <span className="italic text-[#c89d42]">that matter</span>.
               </h2>
             </div>
@@ -183,7 +170,7 @@ export default function Home() {
         <div className="shell">
           <div className="mb-14 mx-auto max-w-3xl text-center">
             <p className="eyebrow mb-5">What we do</p>
-            <h2 className="display text-balance text-[clamp(2.1rem,4.6vw,3.6rem)]">
+            <h2 className="section-title text-balance">
               Two great worlds, <span className="italic text-[#c89d42]">one standard</span>.
             </h2>
             <p className="mt-7 text-[1.02rem] leading-relaxed text-[#a8a29a] mx-auto max-w-2xl">
@@ -207,7 +194,7 @@ export default function Home() {
 
             <div>
               <p className="eyebrow mb-6">Weddings</p>
-              <h2 className="page-title">
+              <h2 className="section-title">
                 Luxury &amp; destination <br />weddings
               </h2>
               <p className="mt-7 text-[1rem] leading-relaxed text-[#a8a29a]">
@@ -257,7 +244,7 @@ export default function Home() {
 
             <div className="lg:order-1">
               <p className="eyebrow mb-6">Corporate</p>
-              <h2 className="page-title">
+              <h2 className="section-title">
                 Corporate &amp; <br />brand events
               </h2>
               <p className="mt-7 text-[1rem] leading-relaxed text-[#a8a29a]">
@@ -298,7 +285,7 @@ export default function Home() {
         <div className="shell">
           <div className="max-w-3xl">
             <p className="eyebrow mb-5">Full-service capability</p>
-            <h2 className="display text-balance text-[clamp(2.1rem,4.6vw,3.6rem)]">
+            <h2 className="section-title text-balance">
               From a single conversation <span className="italic text-[#c89d42]">to a standing ovation</span>.
             </h2>
           </div>
@@ -327,7 +314,7 @@ export default function Home() {
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end mb-14">
             <div>
               <p className="eyebrow mb-4">Selected Portfolio</p>
-              <h2 className="page-title">
+              <h2 className="section-title">
                 Signature <span className="italic text-[#c89d42]">productions</span>.
               </h2>
             </div>
@@ -373,7 +360,7 @@ export default function Home() {
         <div className="shell max-w-4xl">
           <div className="text-center mb-16">
             <p className="eyebrow mb-4">Frequently Asked Questions</p>
-            <h2 className="page-title">
+            <h2 className="section-title">
               Everything you need to <span className="italic text-[#c89d42]">know</span>.
             </h2>
           </div>
@@ -406,7 +393,7 @@ export default function Home() {
       <section className="relative overflow-hidden bg-[#121215] py-24 text-center">
         <div className="shell max-w-3xl">
           <p className="eyebrow mb-4">Begin Your Journey</p>
-          <h2 className="page-title">
+          <h2 className="section-title text-[#f7f3ec]">
             If you are planning something that <br />
             <span className="italic text-[#c89d42]">truly matters</span>, we would be honoured to bring it to life.
           </h2>

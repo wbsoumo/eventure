@@ -220,3 +220,46 @@ body {
   letter-spacing: -0.02em;
   color: var(--color-ivory);
 }
+
+
+/* Scrim and Hero cinematic overlays */
+.site-header-scrim {
+  background: linear-gradient(180deg, rgba(10, 10, 11, 0.95) 0%, rgba(10, 10, 11, 0.78) 45%, rgba(10, 10, 11, 0.3) 80%, transparent 100%) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.hero-scrim-vertical {
+  background: linear-gradient(180deg, rgba(10, 10, 11, 0.88) 0%, rgba(10, 10, 11, 0.55) 30%, rgba(10, 10, 11, 0.4) 60%, rgba(10, 10, 11, 0.95) 100%) !important;
+}
+
+.hero-scrim-horizontal {
+  background: linear-gradient(90deg, rgba(10, 10, 11, 0.94) 0%, rgba(10, 10, 11, 0.72) 35%, rgba(10, 10, 11, 0.3) 65%, transparent 100%) !important;
+}
+
+.hero-scrim-vignette {
+  background: radial-gradient(120% 90% at 50% 30%, transparent 40%, rgba(10, 10, 11, 0.78) 100%) !important;
+}
+
+/* WhatsApp Floating Action Button: Circular */
+.whatsapp-fab-round {
+  position: fixed !important;
+  bottom: 1.75rem !important;
+  right: 1.75rem !important;
+  z-index: 50 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 3.5rem !important;
+  height: 3.5rem !important;
+  border-radius: 9999px !important;
+  background-color: #25d366 !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 25px -4px rgba(37, 211, 102, 0.55), 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  text-decoration: none !important;
+}
+.whatsapp-fab-round:hover {
+  transform: scale(1.1) translateY(-2px) !important;
+  box-shadow: 0 14px 32px -4px rgba(37, 211, 102, 0.7), 0 6px 16px rgba(0, 0, 0, 0.5) !important;
+}

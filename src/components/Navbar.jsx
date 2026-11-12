@@ -9,7 +9,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
+      if (window.scrollY > 30) {
         setScrolled(true);
       } else {
         setScrolled(false);
@@ -47,13 +47,13 @@ export default function Navbar() {
         id="site-header"
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-700 ease-[cubic-bezier(.16,1,.3,1)] ${
           scrolled
-            ? 'bg-[#0a0a0b]/85 backdrop-blur-xl saturate-150 rounded-b-[1.75rem] border-b border-white/10 shadow-[0_20px_50px_-24px_rgba(0,0,0,.85)]'
+            ? 'bg-[#0a0a0b]/90 backdrop-blur-2xl saturate-150 rounded-b-[1.75rem] border-b border-white/10 shadow-[0_20px_50px_-24px_rgba(0,0,0,.9)]'
             : 'bg-transparent'
         }`}
       >
-        {/* Soft scrim gradient for un-scrolled header */}
+        {/* Soft black scrim & blur gradient across the top so menu options are crystal clear */}
         <div
-          className={`pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-[#0a0a0b]/80 via-[#0a0a0b]/45 to-transparent transition-opacity duration-700 ${
+          className={`site-header-scrim pointer-events-none absolute inset-0 -z-10 transition-opacity duration-700 ${
             scrolled ? 'opacity-0' : 'opacity-100'
           }`}
           aria-hidden="true"
@@ -77,8 +77,8 @@ export default function Navbar() {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`link-underline whitespace-nowrap text-[0.68rem] font-bold uppercase tracking-[0.24em] transition-colors ${
-                    isActive ? 'text-[#d4af37] active' : 'text-[#f7f3ec]/90 hover:text-[#d4af37]'
+                  className={`link-underline whitespace-nowrap text-[0.68rem] font-bold uppercase tracking-[0.24em] transition-colors drop-shadow-md ${
+                    isActive ? 'text-[#d4af37] active' : 'text-[#f7f3ec] hover:text-[#d4af37]'
                   }`}
                 >
                   {link.name}
@@ -94,25 +94,28 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Menu Toggle Button */}
+          {/* Mobile Menu 3-Line Hamburger Toggle Button */}
           <button
             type="button"
-            className="relative z-50 flex h-10 w-10 items-center justify-center lg:hidden focus:outline-none"
+            className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden focus:outline-none"
             aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
             onClick={toggleMobileMenu}
           >
-            <span className="relative block h-3 w-6">
-              <span
-                className={`absolute left-0 top-0 h-px w-full bg-[#f7f3ec] transition-all duration-500 ease-[cubic-bezier(.16,1,.3,1)] ${
-                  mobileMenuOpen ? 'translate-y-[6px] rotate-45' : ''
-                }`}
-              />
-              <span
-                className={`absolute bottom-0 left-0 h-px w-full bg-[#f7f3ec] transition-all duration-500 ease-[cubic-bezier(.16,1,.3,1)] ${
-                  mobileMenuOpen ? '-translate-y-[5px] -rotate-45' : ''
-                }`}
-              />
-            </span>
+            <span
+              className={`h-[1.5px] w-6 bg-[#f7f3ec] transition-all duration-300 ${
+                mobileMenuOpen ? 'translate-y-[7.5px] rotate-45' : ''
+              }`}
+            />
+            <span
+              className={`h-[1.5px] w-6 bg-[#f7f3ec] transition-all duration-300 ${
+                mobileMenuOpen ? 'opacity-0' : 'opacity-100'
+              }`}
+            />
+            <span
+              className={`h-[1.5px] w-6 bg-[#f7f3ec] transition-all duration-300 ${
+                mobileMenuOpen ? '-translate-y-[7.5px] -rotate-45' : ''
+              }`}
+            />
           </button>
         </div>
       </header>
