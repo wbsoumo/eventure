@@ -22,23 +22,68 @@ export default function Portfolio() {
   };
 
   return (
-    <main id="main" className="pt-24 lg:pt-32">
-      {/* Hero Section */}
-      <section className="bg-[#0a0a0b] pb-16">
-        <div className="shell">
-          <div className="max-w-4xl">
-            <p className="eyebrow mb-5">Our Portfolio</p>
-            <h1 className="page-title">
-              Moments <br />
-              <span className="italic text-[#c89d42]">remembered</span>.
-            </h1>
-            <p className="mt-8 max-w-2xl text-[1.08rem] leading-relaxed text-[#a8a29a]">
-              A curated selection of Eventure’s signature work: palace and beach weddings, national brand summits, award nights, dealer conclaves, and private gala dinners produced across Kolkata, Rajasthan, Goa, Mumbai, and beyond.
-            </p>
-          </div>
+    <main id="main">
+      {/* Cinematic Hero Section with Backdrop */}
+      <section className="hero relative flex w-full flex-col overflow-hidden bg-[#0a0a0b]">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src="/images/unsplash/photo-1508997449629-303059a039c0.jpg"
+            alt="Eventure Signature Portfolio"
+            className="kenburns h-full w-full object-cover"
+          />
+        </div>
 
-          {/* Filter Bar */}
-          <div className="mt-14 flex flex-wrap items-center gap-3 border-y border-[#2c2c31] py-4">
+        {/* Cinematic Grading Scrims */}
+        <div className="hero-scrim-vertical pointer-events-none absolute inset-0" aria-hidden="true" />
+        <div className="hero-scrim-horizontal pointer-events-none absolute inset-0" aria-hidden="true" />
+        <div className="hero-scrim-vignette pointer-events-none absolute inset-0" aria-hidden="true" />
+
+        {/* Content */}
+        <div className="hero-body relative z-10 flex flex-1 items-center">
+          <div className="shell w-full">
+            <div className="max-w-4xl">
+              <p className="eyebrow hero-eyebrow drop-shadow-md">
+                Our Portfolio
+              </p>
+
+              <h1 className="hero-title text-[#f7f3ec] drop-shadow-lg">
+                <span className="line-mask block">
+                  <span>Moments</span>
+                </span>
+                <span className="line-mask block">
+                  <span className="italic text-[#c89d42]">remembered.</span>
+                </span>
+              </h1>
+
+              <p className="hero-copy max-w-xl text-[1.05rem] leading-relaxed text-[#f7f3ec]/85 drop-shadow-md">
+                A curated selection of Eventure’s signature work: palace and beach weddings, national brand summits, award nights, dealer conclaves, and private gala dinners produced across Kolkata, Rajasthan, Goa, Mumbai, and beyond.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Rail */}
+        <div className="hero-rail relative z-10 shrink-0">
+          <div className="shell">
+            <div className="flex items-end justify-between border-t border-[#f7f3ec]/15 py-5 pr-16 sm:py-6 sm:pr-0">
+              <div className="flex items-end gap-7 sm:gap-12">
+                <div>
+                  <p className="font-display text-2xl text-[#d4af37] sm:text-3xl">Signature Projects</p>
+                  <p className="mt-1 text-[0.54rem] uppercase tracking-[0.24em] text-[#a8a29a] sm:text-[0.58rem] sm:tracking-[0.28em]">
+                    Weddings · Summits · Galas
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Filter Bar */}
+      <section className="bg-[#121215] border-b border-[#2c2c31] py-5 sticky top-0 z-30 backdrop-blur-xl bg-[#121215]/90">
+        <div className="shell">
+          <div className="flex flex-wrap items-center gap-3">
             <span className="text-[0.65rem] uppercase tracking-[0.25em] text-[#a8a29a] mr-4 hidden sm:inline">
               Filter by:
             </span>
@@ -78,9 +123,9 @@ export default function Portfolio() {
                     alt={project.title}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span className="rounded-full bg-[#0a0a0b]/80 px-4 py-2 text-xs uppercase tracking-widest text-[#d4af37] border border-[#d4af37]/40">
-                      View Image ↗
+                      View Photograph ↗
                     </span>
                   </div>
                 </div>
@@ -126,7 +171,7 @@ export default function Portfolio() {
       <section className="bg-[#0a0a0b] py-24 text-center">
         <div className="shell max-w-3xl">
           <p className="eyebrow mb-4">Start A Conversation</p>
-          <h2 className="page-title">
+          <h2 className="section-title text-[#f7f3ec]">
             Have an upcoming celebration or summit?
           </h2>
           <p className="mt-6 text-[#a8a29a]">

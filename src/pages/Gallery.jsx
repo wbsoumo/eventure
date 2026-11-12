@@ -49,23 +49,68 @@ export default function Gallery() {
   const activeItem = lightboxIndex !== null ? filteredItems[lightboxIndex] : null;
 
   return (
-    <main id="main" className="pt-24 lg:pt-32">
-      {/* Hero Section */}
-      <section className="bg-[#0a0a0b] pb-14">
-        <div className="shell">
-          <div className="max-w-4xl">
-            <p className="eyebrow mb-5">Visual Archive</p>
-            <h1 className="page-title">
-              The work, <br />
-              <span className="italic text-[#c89d42]">up close</span>.
-            </h1>
-            <p className="mt-8 max-w-2xl text-[1.08rem] leading-relaxed text-[#a8a29a]">
-              A visual chronicle of Eventure’s own work: intricate sangeet stages, vibrant haldi setups, magnificent floral mandaps, and broadcast-grade national summit productions.
-            </p>
-          </div>
+    <main id="main">
+      {/* Cinematic Hero Section with Backdrop */}
+      <section className="hero relative flex w-full flex-col overflow-hidden bg-[#0a0a0b]">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src="/images/gallery/pudhari-maha-summit-01.webp"
+            alt="Eventure Visual Archive"
+            className="kenburns h-full w-full object-cover"
+          />
+        </div>
 
-          {/* Category Tabs */}
-          <div className="mt-12 flex flex-wrap items-center gap-3 border-y border-[#2c2c31] py-4">
+        {/* Cinematic Grading Scrims */}
+        <div className="hero-scrim-vertical pointer-events-none absolute inset-0" aria-hidden="true" />
+        <div className="hero-scrim-horizontal pointer-events-none absolute inset-0" aria-hidden="true" />
+        <div className="hero-scrim-vignette pointer-events-none absolute inset-0" aria-hidden="true" />
+
+        {/* Content */}
+        <div className="hero-body relative z-10 flex flex-1 items-center">
+          <div className="shell w-full">
+            <div className="max-w-4xl">
+              <p className="eyebrow hero-eyebrow drop-shadow-md">
+                Visual Archive
+              </p>
+
+              <h1 className="hero-title text-[#f7f3ec] drop-shadow-lg">
+                <span className="line-mask block">
+                  <span>The work,</span>
+                </span>
+                <span className="line-mask block">
+                  <span className="italic text-[#c89d42]">up close.</span>
+                </span>
+              </h1>
+
+              <p className="hero-copy max-w-xl text-[1.05rem] leading-relaxed text-[#f7f3ec]/85 drop-shadow-md">
+                A visual chronicle of Eventure’s own work: intricate sangeet stages, vibrant haldi setups, magnificent floral mandaps, and broadcast-grade national summit productions.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Rail */}
+        <div className="hero-rail relative z-10 shrink-0">
+          <div className="shell">
+            <div className="flex items-end justify-between border-t border-[#f7f3ec]/15 py-5 pr-16 sm:py-6 sm:pr-0">
+              <div className="flex items-end gap-7 sm:gap-12">
+                <div>
+                  <p className="font-display text-2xl text-[#d4af37] sm:text-3xl">Visual Archive</p>
+                  <p className="mt-1 text-[0.54rem] uppercase tracking-[0.24em] text-[#a8a29a] sm:text-[0.58rem] sm:tracking-[0.28em]">
+                    High-Res Photography
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Filter Tabs Bar */}
+      <section className="bg-[#121215] border-b border-[#2c2c31] py-5 sticky top-0 z-30 backdrop-blur-xl bg-[#121215]/90">
+        <div className="shell">
+          <div className="flex flex-wrap items-center gap-3">
             {filterTabs.map((tab) => (
               <button
                 key={tab.value}
@@ -87,14 +132,14 @@ export default function Gallery() {
         </div>
       </section>
 
-      {/* Gallery Grid */}
+      {/* Gallery Masonry Grid */}
       <section className="bg-[#121215] py-16">
         <div className="shell">
           <div className="columns-1 gap-6 sm:columns-2 md:columns-3 lg:columns-4">
             {currentVisible.map((item, idx) => (
               <div
                 key={idx}
-                className="group relative mb-6 break-inside-avoid overflow-hidden rounded-xl bg-[#1b1b1f] border border-[#2c2c31] cursor-pointer"
+                className="group relative mb-6 break-inside-avoid overflow-hidden rounded-xl bg-[#1b1b1f] border border-[#2c2c31] cursor-pointer transition-all hover:border-[#d4af37]/40 hover:shadow-xl"
                 onClick={() => openLightbox(idx)}
               >
                 <img
@@ -103,7 +148,7 @@ export default function Gallery() {
                   loading="lazy"
                   className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex flex-col justify-end p-4">
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex flex-col justify-end p-4">
                   <span className="text-[0.6rem] font-bold uppercase tracking-[0.2em] text-[#d4af37]">
                     {item.category}
                   </span>
@@ -132,7 +177,7 @@ export default function Gallery() {
       <section className="bg-[#0a0a0b] py-24 text-center">
         <div className="shell max-w-3xl">
           <p className="eyebrow mb-4">Crafting Memories</p>
-          <h2 className="page-title">
+          <h2 className="section-title text-[#f7f3ec]">
             Let’s create your next <br />
             <span className="italic text-[#c89d42]">unforgettable celebration</span>.
           </h2>

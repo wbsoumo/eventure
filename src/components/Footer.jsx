@@ -4,141 +4,172 @@ import { siteData } from '../data/siteData';
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[#2c2c31]/80 bg-[#0a0a0b] pt-16 pb-12 text-[#a8a29a]">
-      <div className="shell">
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-          {/* Brand info */}
-          <div className="lg:col-span-5 space-y-6">
+    <footer className="relative border-t border-[#2c2c31] bg-[#121215]">
+      <div className="shell py-16 lg:py-24">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
+          {/* Column 1: Brand */}
+          <div className="lg:col-span-4">
             <Link to="/" className="inline-block">
               <img
                 src="/logos/eventure-logo.svg"
                 alt="Eventure"
-                className="h-12 w-auto object-contain"
+                className="w-auto shrink-0 h-10 lg:h-12"
               />
             </Link>
-            <p className="max-w-md text-sm leading-relaxed text-[#a8a29a]">
-              Eventure is a luxury event management house based in Kolkata. For over a decade, we have created landmark destination weddings, flagship corporate summits, and bespoke celebrations across India and abroad.
+            <p className="mt-6 max-w-sm text-[0.95rem] leading-relaxed text-[#a8a29a]">
+              Where vision becomes an experience. Luxury weddings, corporate events and bespoke experiences, delivered with precision across India.
             </p>
-            <div className="pt-2 text-xs uppercase tracking-[0.2em] text-[#d4af37]">
-              Headquartered in Kolkata · Operating Pan India & Global
+            <div className="mt-8 flex flex-wrap gap-x-5 gap-y-3">
+              <a
+                href={siteData.socials.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-underline text-[0.62rem] uppercase tracking-[0.24em] text-[#a8a29a] hover:text-[#d4af37]"
+              >
+                Instagram
+              </a>
+              <a
+                href={siteData.socials.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-underline text-[0.62rem] uppercase tracking-[0.24em] text-[#a8a29a] hover:text-[#d4af37]"
+              >
+                Facebook
+              </a>
+              <a
+                href={siteData.socials.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-underline text-[0.62rem] uppercase tracking-[0.24em] text-[#a8a29a] hover:text-[#d4af37]"
+              >
+                LinkedIn
+              </a>
+              <a
+                href={siteData.socials.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-underline text-[0.62rem] uppercase tracking-[0.24em] text-[#a8a29a] hover:text-[#d4af37]"
+              >
+                YouTube
+              </a>
             </div>
           </div>
 
-          {/* Quick links */}
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-7">
-            {/* Column 1: Experiences */}
-            <div className="space-y-4">
-              <p className="text-[0.68rem] font-bold uppercase tracking-[0.26em] text-[#f7f3ec]">
-                Experiences
-              </p>
-              <ul className="space-y-2.5 text-sm">
-                <li>
-                  <Link to="/weddings" className="transition-colors hover:text-[#d4af37]">
-                    Destination Weddings
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/weddings" className="transition-colors hover:text-[#d4af37]">
-                    Luxury City Weddings
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/corporate" className="transition-colors hover:text-[#d4af37]">
-                    Conferences & Summits
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/corporate" className="transition-colors hover:text-[#d4af37]">
-                    Brand & Product Reveals
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/corporate" className="transition-colors hover:text-[#d4af37]">
-                    Award Nights & Galas
-                  </Link>
-                </li>
-              </ul>
-            </div>
+          {/* Column 2: Explore */}
+          <div className="lg:col-span-2">
+            <h2 className="mb-6 text-[0.6rem] uppercase tracking-[0.3em] text-[#d4af37]">Explore</h2>
+            <ul className="space-y-3">
+              <li>
+                <Link to="/" className="text-sm text-[#f7f3ec]/70 transition-colors hover:text-[#d4af37]">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link to="/weddings" className="text-sm text-[#f7f3ec]/70 transition-colors hover:text-[#d4af37]">
+                  Weddings
+                </Link>
+              </li>
+              <li>
+                <Link to="/corporate" className="text-sm text-[#f7f3ec]/70 transition-colors hover:text-[#d4af37]">
+                  Corporate
+                </Link>
+              </li>
+              <li>
+                <Link to="/portfolio" className="text-sm text-[#f7f3ec]/70 transition-colors hover:text-[#d4af37]">
+                  Portfolio
+                </Link>
+              </li>
+              <li>
+                <Link to="/gallery" className="text-sm text-[#f7f3ec]/70 transition-colors hover:text-[#d4af37]">
+                  Gallery
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="text-sm text-[#f7f3ec]/70 transition-colors hover:text-[#d4af37]">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="text-sm text-[#f7f3ec]/70 transition-colors hover:text-[#d4af37]">
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </div>
 
-            {/* Column 2: Navigation */}
-            <div className="space-y-4">
-              <p className="text-[0.68rem] font-bold uppercase tracking-[0.26em] text-[#f7f3ec]">
-                Navigation
-              </p>
-              <ul className="space-y-2.5 text-sm">
-                <li>
-                  <Link to="/about" className="transition-colors hover:text-[#d4af37]">
-                    About Our House
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/portfolio" className="transition-colors hover:text-[#d4af37]">
-                    Signature Portfolio
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/gallery" className="transition-colors hover:text-[#d4af37]">
-                    Visual Archive
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/contact" className="transition-colors hover:text-[#d4af37]">
-                    Start an Enquiry
-                  </Link>
-                </li>
-              </ul>
-            </div>
+          {/* Column 3: Services */}
+          <div className="lg:col-span-3">
+            <h2 className="mb-6 text-[0.6rem] uppercase tracking-[0.3em] text-[#d4af37]">Services</h2>
+            <ul className="space-y-3">
+              <li>
+                <Link to="/weddings" className="text-sm text-[#f7f3ec]/70 transition-colors hover:text-[#d4af37]">
+                  Destination Weddings
+                </Link>
+              </li>
+              <li>
+                <Link to="/weddings" className="text-sm text-[#f7f3ec]/70 transition-colors hover:text-[#d4af37]">
+                  Luxury City Weddings
+                </Link>
+              </li>
+              <li>
+                <Link to="/corporate" className="text-sm text-[#f7f3ec]/70 transition-colors hover:text-[#d4af37]">
+                  Conferences &amp; Summits
+                </Link>
+              </li>
+              <li>
+                <Link to="/corporate" className="text-sm text-[#f7f3ec]/70 transition-colors hover:text-[#d4af37]">
+                  Product Launches
+                </Link>
+              </li>
+              <li>
+                <Link to="/corporate" className="text-sm text-[#f7f3ec]/70 transition-colors hover:text-[#d4af37]">
+                  Award Nights &amp; Galas
+                </Link>
+              </li>
+              <li>
+                <Link to="/corporate" className="text-sm text-[#f7f3ec]/70 transition-colors hover:text-[#d4af37]">
+                  Exhibitions &amp; Activations
+                </Link>
+              </li>
+            </ul>
+          </div>
 
-            {/* Column 3: Contact Details */}
-            <div className="col-span-2 sm:col-span-1 space-y-4">
-              <p className="text-[0.68rem] font-bold uppercase tracking-[0.26em] text-[#f7f3ec]">
-                Kolkata Studio
-              </p>
-              <div className="space-y-2.5 text-sm">
-                <p className="text-xs leading-relaxed text-[#a8a29a]">
-                  {siteData.address.formatted}
-                </p>
-                <p>
-                  <a
-                    href={`tel:${siteData.phoneRaw}`}
-                    className="block text-[#f7f3ec] hover:text-[#d4af37] transition-colors"
-                  >
-                    {siteData.phone}
-                  </a>
-                </p>
-                <p>
-                  <a
-                    href={`https://wa.me/91${siteData.whatsapp}?text=Hello%20Eventure%2C%20I%20would%20like%20to%20discuss%20an%20upcoming%20event.`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-[#25d366] hover:underline"
-                  >
-                    <span>WhatsApp: +91 {siteData.whatsapp}</span>
-                  </a>
-                </p>
-                <p>
-                  <a
-                    href={`mailto:${siteData.email}`}
-                    className="block text-[#a8a29a] hover:text-[#d4af37] transition-colors"
-                  >
-                    {siteData.email}
-                  </a>
-                </p>
-              </div>
+          {/* Column 4: Studio (Kolkata) */}
+          <div className="lg:col-span-3">
+            <h2 className="mb-6 text-[0.6rem] uppercase tracking-[0.3em] text-[#d4af37]">Studio</h2>
+            <address className="space-y-1 text-sm not-italic leading-relaxed text-[#f7f3ec]/70">
+              <span className="block">{siteData.address.street}</span>
+              <span className="block">{siteData.address.locality}, Kolkata {siteData.address.postalCode}</span>
+              <span className="block">West Bengal, India</span>
+            </address>
+            <div className="mt-6 space-y-2 text-sm">
+              <a href={`tel:${siteData.phoneRaw}`} className="block text-[#f7f3ec]/70 hover:text-[#d4af37] transition-colors">
+                {siteData.phone}
+              </a>
+              <a href={`mailto:${siteData.email}`} className="block text-[#f7f3ec]/70 hover:text-[#d4af37] transition-colors">
+                {siteData.email}
+              </a>
+              <a
+                href={`https://wa.me/91${siteData.whatsapp}?text=Hello%20Eventure%2C%20I%20would%20like%20to%20discuss%20an%20upcoming%20event.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-[#d4af37] hover:text-[#c89d42]"
+              >
+                WhatsApp us
+              </a>
             </div>
+            <p className="mt-5 text-xs tracking-wide text-[#a8a29a]">{siteData.openingHours} IST</p>
           </div>
         </div>
 
-        {/* Golden rule separator */}
-        <div className="rule my-12" />
+        {/* Rule separator */}
+        <div className="rule mt-16" />
 
         {/* Bottom bar */}
-        <div className="flex flex-col items-center justify-between gap-4 text-xs text-[#a8a29a]/70 sm:flex-row">
+        <div className="mt-8 flex flex-col gap-4 text-xs text-[#a8a29a] sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Eventure. All rights reserved.</p>
-          <p className="flex items-center gap-6">
-            <span>Website: <a href="https://myeventure.in/" className="text-[#d4af37] hover:underline">myeventure.in</a></span>
-            <span>·</span>
-            <span>Kolkata, India</span>
+          <p className="tracking-[0.2em] uppercase text-[0.6rem]">
+            Luxury Weddings &nbsp;·&nbsp; Corporate Events &nbsp;·&nbsp; Bespoke Experiences
           </p>
         </div>
       </div>

@@ -9,7 +9,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 30) {
+      if (window.scrollY > 25) {
         setScrolled(true);
       } else {
         setScrolled(false);
@@ -46,15 +46,17 @@ export default function Navbar() {
       <header
         id="site-header"
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-700 ease-[cubic-bezier(.16,1,.3,1)] ${
-          scrolled
-            ? 'bg-[#0a0a0b]/90 backdrop-blur-2xl saturate-150 rounded-b-[1.75rem] border-b border-white/10 shadow-[0_20px_50px_-24px_rgba(0,0,0,.9)]'
+          mobileMenuOpen
+            ? 'bg-[#0a0a0b]'
+            : scrolled
+            ? 'bg-[#0a0a0b]/92 backdrop-blur-2xl saturate-150 rounded-b-[1.75rem] border-b border-white/10 shadow-[0_20px_50px_-24px_rgba(0,0,0,.95)]'
             : 'bg-transparent'
         }`}
       >
-        {/* Soft black scrim & blur gradient across the top so menu options are crystal clear */}
+        {/* Soft black scrim & blur gradient across top */}
         <div
           className={`site-header-scrim pointer-events-none absolute inset-0 -z-10 transition-opacity duration-700 ${
-            scrolled ? 'opacity-0' : 'opacity-100'
+            scrolled || mobileMenuOpen ? 'opacity-0' : 'opacity-100'
           }`}
           aria-hidden="true"
         />
@@ -94,76 +96,79 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Menu 3-Line Hamburger Toggle Button */}
+          {/* 3-Line Mobile Hamburger Menu Toggle Button */}
           <button
             type="button"
-            className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden focus:outline-none"
+            className={`hamburger-btn lg:hidden ${mobileMenuOpen ? 'is-active' : ''}`}
             aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
             onClick={toggleMobileMenu}
           >
-            <span
-              className={`h-[1.5px] w-6 bg-[#f7f3ec] transition-all duration-300 ${
-                mobileMenuOpen ? 'translate-y-[7.5px] rotate-45' : ''
-              }`}
-            />
-            <span
-              className={`h-[1.5px] w-6 bg-[#f7f3ec] transition-all duration-300 ${
-                mobileMenuOpen ? 'opacity-0' : 'opacity-100'
-              }`}
-            />
-            <span
-              className={`h-[1.5px] w-6 bg-[#f7f3ec] transition-all duration-300 ${
-                mobileMenuOpen ? '-translate-y-[7.5px] -rotate-45' : ''
-              }`}
-            />
+            <span className="hamburger-bar" />
+            <span className="hamburger-bar" />
+            <span className="hamburger-bar" />
           </button>
         </div>
       </header>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer on Proper Solid Luxury Black with Staggered Reveal Animation */}
       <div
         id="mobile-menu"
-        className={`fixed inset-0 z-40 overflow-y-auto overscroll-contain bg-[#0a0a0b]/98 backdrop-blur-2xl transition-all duration-500 lg:hidden ${
-          mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        className={`mobile-menu-drawer lg:hidden ${
+          mobileMenuOpen ? 'is-open' : 'is-closed'
         }`}
       >
         <div className="flex min-h-full flex-col justify-between gap-10 px-6 pb-12 pt-28">
           <nav className="flex flex-col gap-1" aria-label="Mobile">
+            {/* 01 Home */}
             <Link
               to="/"
-              className="group border-b border-[#2c2c31]/60 py-4 font-display text-4xl font-light text-[#f7f3ec] transition-colors hover:text-[#d4af37]"
+              style={{ animationDelay: '60ms' }}
+              className={`group border-b border-[#2c2c31]/60 py-4 font-display text-4xl font-light text-[#f7f3ec] transition-colors hover:text-[#d4af37] ${
+                mobileMenuOpen ? 'mobile-reveal-item' : ''
+              }`}
             >
-              <span className="text-[0.6rem] align-super font-sans tracking-[0.3em] text-[#d4af37]/70 mr-3">
+              <span className="text-[0.6rem] align-super font-sans tracking-[0.3em] text-[#d4af37]/80 mr-3">
                 01
               </span>
               Home
             </Link>
 
-            {navLinks.map((link) => (
+            {/* Nav links 02 to 06 */}
+            {navLinks.map((link, idx) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className="group border-b border-[#2c2c31]/60 py-4 font-display text-4xl font-light text-[#f7f3ec] transition-colors hover:text-[#d4af37]"
+                style={{ animationDelay: `${120 + idx * 55}ms` }}
+                className={`group border-b border-[#2c2c31]/60 py-4 font-display text-4xl font-light text-[#f7f3ec] transition-colors hover:text-[#d4af37] ${
+                  mobileMenuOpen ? 'mobile-reveal-item' : ''
+                }`}
               >
-                <span className="text-[0.6rem] align-super font-sans tracking-[0.3em] text-[#d4af37]/70 mr-3">
+                <span className="text-[0.6rem] align-super font-sans tracking-[0.3em] text-[#d4af37]/80 mr-3">
                   {link.num}
                 </span>
                 {link.name}
               </Link>
             ))}
 
+            {/* 07 Contact */}
             <Link
               to="/contact"
-              className="group border-b border-[#2c2c31]/60 py-4 font-display text-4xl font-light text-[#f7f3ec] transition-colors hover:text-[#d4af37]"
+              style={{ animationDelay: '420ms' }}
+              className={`group border-b border-[#2c2c31]/60 py-4 font-display text-4xl font-light text-[#f7f3ec] transition-colors hover:text-[#d4af37] ${
+                mobileMenuOpen ? 'mobile-reveal-item' : ''
+              }`}
             >
-              <span className="text-[0.6rem] align-super font-sans tracking-[0.3em] text-[#d4af37]/70 mr-3">
+              <span className="text-[0.6rem] align-super font-sans tracking-[0.3em] text-[#d4af37]/80 mr-3">
                 07
               </span>
               Contact
             </Link>
           </nav>
 
-          <div className="space-y-5">
+          <div
+            style={{ animationDelay: '480ms' }}
+            className={`space-y-5 ${mobileMenuOpen ? 'mobile-reveal-item' : ''}`}
+          >
             <div className="rule" />
             <a
               href={`tel:${siteData.phoneRaw}`}

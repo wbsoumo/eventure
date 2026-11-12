@@ -36,46 +36,78 @@ export default function Weddings() {
   ];
 
   return (
-    <main id="main" className="pt-24 lg:pt-32">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-[#0a0a0b] pb-20">
-        <div className="shell">
-          <div className="max-w-4xl">
-            <p className="eyebrow mb-5">Luxury &amp; Destination Weddings</p>
-            <h1 className="page-title">
-              A celebration that feels <br />
-              <span className="italic text-[#c89d42]">entirely your own</span>.
-            </h1>
-            <p className="mt-8 max-w-2xl text-[1.08rem] leading-relaxed text-[#a8a29a]">
-              No two families celebrate the same way. And no two Eventure weddings should either.
-              From private heritage estates in Kolkata to the palaces of Rajasthan and beachfront shores of Goa,
-              we design and produce luxury weddings that honor heritage while creating unforgettable modern magic.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link to="/contact" className="btn btn-gold">
-                Plan your wedding
-              </Link>
-              <a
-                href={`https://wa.me/91${siteData.whatsapp}?text=Hello%20Eventure%2C%20I%20would%20like%20to%20discuss%20our%20upcoming%20wedding.`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-ghost"
-              >
-                WhatsApp Wedding Desk
-              </a>
+    <main id="main">
+      {/* Cinematic Hero Section with Backdrop */}
+      <section className="hero relative flex w-full flex-col overflow-hidden bg-[#0a0a0b]">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src="/images/wedding-ceremony-confetti.webp"
+            alt="Eventure Luxury Wedding Ceremony"
+            className="kenburns h-full w-full object-cover"
+          />
+        </div>
+
+        {/* Cinematic Grading Scrims */}
+        <div className="hero-scrim-vertical pointer-events-none absolute inset-0" aria-hidden="true" />
+        <div className="hero-scrim-horizontal pointer-events-none absolute inset-0" aria-hidden="true" />
+        <div className="hero-scrim-vignette pointer-events-none absolute inset-0" aria-hidden="true" />
+
+        {/* Content */}
+        <div className="hero-body relative z-10 flex flex-1 items-center">
+          <div className="shell w-full">
+            <div className="max-w-4xl">
+              <p className="eyebrow hero-eyebrow drop-shadow-md">
+                Luxury &amp; Destination Weddings
+              </p>
+
+              <h1 className="hero-title text-[#f7f3ec] drop-shadow-lg">
+                <span className="line-mask block">
+                  <span>A celebration that feels</span>
+                </span>
+                <span className="line-mask block">
+                  <span className="italic text-[#c89d42]">entirely your own.</span>
+                </span>
+              </h1>
+
+              <p className="hero-copy max-w-xl text-[1.05rem] leading-relaxed text-[#f7f3ec]/85 drop-shadow-md">
+                No two families celebrate the same way. And no two Eventure weddings should either.
+                From private heritage estates in Kolkata to the palaces of Rajasthan and beachfront shores of Goa,
+                we design and produce luxury weddings that honor heritage while creating unforgettable modern magic.
+              </p>
+
+              <div className="hero-actions flex flex-wrap gap-4">
+                <Link to="/contact" className="btn btn-gold !px-8">
+                  Plan your wedding
+                </Link>
+                <a
+                  href={`https://wa.me/91${siteData.whatsapp}?text=Hello%20Eventure%2C%20I%20would%20like%20to%20discuss%20our%20upcoming%20wedding.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-ghost !px-8"
+                >
+                  WhatsApp Wedding Desk
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* Hero Full Banner Image */}
-      <section className="relative h-[65vh] w-full overflow-hidden">
-        <img
-          src="/images/wedding-ceremony-confetti.webp"
-          alt="Eventure Luxury Wedding Ceremony"
-          className="h-full w-full object-cover"
-        />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0a0a0b] via-transparent to-[#0a0a0b]/60" />
+        {/* Rail */}
+        <div className="hero-rail relative z-10 shrink-0">
+          <div className="shell">
+            <div className="flex items-end justify-between border-t border-[#f7f3ec]/15 py-5 pr-16 sm:py-6 sm:pr-0">
+              <div className="flex items-end gap-7 sm:gap-12">
+                <div>
+                  <p className="font-display text-2xl text-[#d4af37] sm:text-3xl">Pan India &amp; Global</p>
+                  <p className="mt-1 text-[0.54rem] uppercase tracking-[0.24em] text-[#a8a29a] sm:text-[0.58rem] sm:tracking-[0.28em]">
+                    Palaces · Resorts · Heritage
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Services Breakdown */}
@@ -83,7 +115,7 @@ export default function Weddings() {
         <div className="shell">
           <div className="mb-16 max-w-3xl">
             <p className="eyebrow mb-4">What we do</p>
-            <h2 className="page-title">
+            <h2 className="section-title">
               Everything, <span className="italic text-[#c89d42]">handled</span>.
             </h2>
             <p className="mt-6 text-[#a8a29a] leading-relaxed">
@@ -98,12 +130,11 @@ export default function Weddings() {
                 className="group relative overflow-hidden rounded-2xl bg-[#1b1b1f] border border-[#2c2c31] transition-all hover:border-[#d4af37]/40"
               >
                 {service.image && (
-                  <div className="aspect-16/10 overflow-hidden">
+                  <div className="aspect-16/10 overflow-hidden cursor-pointer" onClick={() => setSelectedImage(service.image)}>
                     <img
                       src={service.image}
                       alt={service.title}
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 cursor-pointer"
-                      onClick={() => setSelectedImage(service.image)}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
                 )}
@@ -124,7 +155,7 @@ export default function Weddings() {
         <div className="shell">
           <div className="mb-16 text-center max-w-2xl mx-auto">
             <p className="eyebrow mb-4">Destinations</p>
-            <h2 className="page-title">
+            <h2 className="section-title">
               Where will your <span className="italic text-[#c89d42]">story unfold</span>?
             </h2>
             <p className="mt-4 text-sm text-[#a8a29a]">
@@ -158,7 +189,7 @@ export default function Weddings() {
         <div className="shell max-w-4xl">
           <div className="text-center mb-16">
             <p className="eyebrow mb-4">The Process</p>
-            <h2 className="page-title">
+            <h2 className="section-title">
               How we work <span className="italic text-[#c89d42]">together</span>.
             </h2>
           </div>
@@ -204,7 +235,7 @@ export default function Weddings() {
       <section className="bg-[#0a0a0b] py-24 text-center">
         <div className="shell max-w-3xl">
           <p className="eyebrow mb-4">Let's Celebrate</p>
-          <h2 className="page-title">
+          <h2 className="section-title text-[#f7f3ec]">
             Your dream wedding deserves <br />
             <span className="italic text-[#c89d42]">flawless execution</span>.
           </h2>

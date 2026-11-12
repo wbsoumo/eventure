@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Marquee from '../components/Marquee';
 import { siteData } from '../data/siteData';
-import { corporateServices } from '../data/servicesData';
 import Lightbox from '../components/Lightbox';
 
 export default function Corporate() {
@@ -42,46 +41,78 @@ export default function Corporate() {
   ];
 
   return (
-    <main id="main" className="pt-24 lg:pt-32">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-[#0a0a0b] pb-20">
-        <div className="shell">
-          <div className="max-w-4xl">
-            <p className="eyebrow mb-5">Corporate Event Management &amp; Production</p>
-            <h1 className="page-title">
-              Events that engage audiences <br />
-              <span className="italic text-[#c89d42]">and elevate brands</span>.
-            </h1>
-            <p className="mt-8 max-w-2xl text-[1.08rem] leading-relaxed text-[#a8a29a]">
-              Ambitious on stage. Invisible off it.
-              From national media conclaves and BFSI summits to high-profile product reveals,
-              Eventure produces corporate events with international broadcast precision.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link to="/contact" className="btn btn-gold">
-                Start a corporate brief
-              </Link>
-              <a
-                href={`https://wa.me/91${siteData.whatsapp}?text=Hello%20Eventure%2C%20I%20would%20like%20to%20discuss%20a%20corporate%20event.`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-ghost"
-              >
-                Direct WhatsApp Desk
-              </a>
+    <main id="main">
+      {/* Cinematic Hero Section with Backdrop */}
+      <section className="hero relative flex w-full flex-col overflow-hidden bg-[#0a0a0b]">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src="/images/summit-audience.webp"
+            alt="Eventure Corporate Summit Production"
+            className="kenburns h-full w-full object-cover"
+          />
+        </div>
+
+        {/* Cinematic Grading Scrims */}
+        <div className="hero-scrim-vertical pointer-events-none absolute inset-0" aria-hidden="true" />
+        <div className="hero-scrim-horizontal pointer-events-none absolute inset-0" aria-hidden="true" />
+        <div className="hero-scrim-vignette pointer-events-none absolute inset-0" aria-hidden="true" />
+
+        {/* Content */}
+        <div className="hero-body relative z-10 flex flex-1 items-center">
+          <div className="shell w-full">
+            <div className="max-w-4xl">
+              <p className="eyebrow hero-eyebrow drop-shadow-md">
+                Corporate Event Management &amp; Production
+              </p>
+
+              <h1 className="hero-title text-[#f7f3ec] drop-shadow-lg">
+                <span className="line-mask block">
+                  <span>Events that engage audiences</span>
+                </span>
+                <span className="line-mask block">
+                  <span className="italic text-[#c89d42]">and elevate brands.</span>
+                </span>
+              </h1>
+
+              <p className="hero-copy max-w-xl text-[1.05rem] leading-relaxed text-[#f7f3ec]/85 drop-shadow-md">
+                Ambitious on stage. Invisible off it.
+                From national media conclaves and BFSI summits to high-profile product reveals,
+                Eventure produces corporate events with international broadcast precision.
+              </p>
+
+              <div className="hero-actions flex flex-wrap gap-4">
+                <Link to="/contact" className="btn btn-gold !px-8">
+                  Start a corporate brief
+                </Link>
+                <a
+                  href={`https://wa.me/91${siteData.whatsapp}?text=Hello%20Eventure%2C%20I%20would%20like%20to%20discuss%20a%20corporate%20event.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-ghost !px-8"
+                >
+                  Direct WhatsApp Desk
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* Hero Banner Image */}
-      <section className="relative h-[65vh] w-full overflow-hidden">
-        <img
-          src="/images/kotak-neo-kona-kona-investor.jpeg"
-          alt="Eventure Corporate Stage Production"
-          className="h-full w-full object-cover"
-        />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0a0a0b] via-transparent to-[#0a0a0b]/60" />
+        {/* Rail */}
+        <div className="hero-rail relative z-10 shrink-0">
+          <div className="shell">
+            <div className="flex items-end justify-between border-t border-[#f7f3ec]/15 py-5 pr-16 sm:py-6 sm:pr-0">
+              <div className="flex items-end gap-7 sm:gap-12">
+                <div>
+                  <p className="font-display text-2xl text-[#d4af37] sm:text-3xl">Broadcast Grade</p>
+                  <p className="mt-1 text-[0.54rem] uppercase tracking-[0.24em] text-[#a8a29a] sm:text-[0.58rem] sm:tracking-[0.28em]">
+                    AV · LED Rigging · Live Feeds
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Marquee */}
@@ -92,7 +123,7 @@ export default function Corporate() {
         <div className="shell">
           <div className="mb-16 max-w-3xl">
             <p className="eyebrow mb-4">Our Formats</p>
-            <h2 className="page-title">
+            <h2 className="section-title">
               What we <span className="italic text-[#c89d42]">produce</span>.
             </h2>
             <p className="mt-6 text-[#a8a29a] leading-relaxed">
@@ -106,12 +137,11 @@ export default function Corporate() {
                 key={idx}
                 className="group relative overflow-hidden rounded-2xl bg-[#1b1b1f] border border-[#2c2c31] transition-all hover:border-[#d4af37]/40"
               >
-                <div className="aspect-16/10 overflow-hidden">
+                <div className="aspect-16/10 overflow-hidden cursor-pointer" onClick={() => setSelectedImage(item.image)}>
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 cursor-pointer"
-                    onClick={() => setSelectedImage(item.image)}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
                 <div className="p-7">
@@ -130,7 +160,7 @@ export default function Corporate() {
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-20 items-center">
             <div>
               <p className="eyebrow mb-5">Engineering Excellence</p>
-              <h2 className="page-title">
+              <h2 className="section-title">
                 Broadcast-grade technical <br />
                 <span className="italic text-[#c89d42]">rigs and show calling</span>.
               </h2>
@@ -156,8 +186,8 @@ export default function Corporate() {
 
             <div className="relative overflow-hidden rounded-2xl border border-[#2c2c31]">
               <img
-                src="/images/summit-audience.webp"
-                alt="Audience at Eventure Corporate Summit"
+                src="/images/kotak-neo-kona-kona-investor.jpeg"
+                alt="Corporate Summit Production Stage by Eventure"
                 className="w-full h-auto object-cover"
               />
             </div>
@@ -169,7 +199,7 @@ export default function Corporate() {
       <section className="bg-[#121215] py-24 text-center">
         <div className="shell max-w-3xl">
           <p className="eyebrow mb-4">Partner With Us</p>
-          <h2 className="page-title">
+          <h2 className="section-title text-[#f7f3ec]">
             Ready to produce your next <br />
             <span className="italic text-[#c89d42]">corporate milestone</span>?
           </h2>
